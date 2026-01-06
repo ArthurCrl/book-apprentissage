@@ -181,14 +181,24 @@ position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
+    align-items: center;
     padding-bottom: 40px;
     z-index: 10;
 }
 
+.sun-logos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 90%; 
+}
+
 .logo-sun {
-    width: 80%;
+    width: 140px;
     height: auto;
-    margin: 2px 0;
+    object-fit: contain;
 }
 
 .orbit-path {
