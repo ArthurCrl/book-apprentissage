@@ -220,13 +220,9 @@ position: fixed;
 
 .planet {
     position: absolute;
-    
-    left: 50%; 
-
+    left: 50%;
     top: 100%; 
-    
     transform: translate(-50%, -50%);
-
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -256,14 +252,174 @@ position: fixed;
 .s10 { background: #1abc9c; transform: translate(-50%, -50%) rotate(15deg); }
 
 #backToSolar {
+    position: fixed;
+    bottom: 30%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 0.9rem;
     padding: 10px 20px;
     pointer-events: auto;
+    color: #ffffff;
 }
 
 #backToSolar:hover {
-    background: rgba(74, 144, 226, 0.3);
-    border-color: var(--accent-blue);
+    color: #000000;
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+/* --- SYSTÈME PLANÉTAIRE (Vue Semestre) --- */
+.planetary-system {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centré verticalement cette fois, ou ajusté */
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* La planète centrale (remplace le soleil) */
+.selected-planet-container {
+    position: absolute;
+    top: 35%; /* Un peu plus haut que le centre */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.central-planet {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--accent-blue), #000);
+    box-shadow: 0 0 50px var(--accent-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+}
+
+/* Orbites des lunes */
+.orbit-moon {
+    position: absolute;
+    top: 35%; /* On centre par rapport à l'écran */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+}
+
+/* Tailles des orbites lunes */
+.orbit-moon-1 { width: 350px; height: 350px; transform: translate(-50%, -50%) rotate(225deg); }
+.orbit-moon-1 .moon { transform: rotate(-225deg); }
+.orbit-moon-2 { width: 500px; height: 500px; transform: translate(-50%, -50%) rotate(0deg); } 
+.orbit-moon-2 .moon { transform: rotate(0deg); }
+.orbit-moon-3 { width: 650px; height: 650px; transform: translate(-50%, -50%) rotate(90deg); }
+.orbit-moon-3 .moon { transform: rotate(-90deg); }
+
+/* Les Lunes (Boutons) */
+.moon {
+    position: absolute;
+    top: 50%; 
+    right: -40px; /* Positionné à droite */
+    margin-top: -40px; 
+    
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.8rem;
+    cursor: pointer;
+    pointer-events: auto; /* Important pour le clic */
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    background: radial-gradient(circle at 30% 30%, #464646, #000);
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.8), 
+                0 0 15px rgba(121, 121, 121, 0.4);
+    transition: box-shadow 0.3s;
+}
+
+.moon:hover {
+    background: #464646;
+        box-shadow: inset -5px -5px 15px rgba(0,0,0,0.8), 
+                0 0 25px var(--accent-blue);
+}
+/* Animation de rotation simple */
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Animation inverse pour le texte */
+@keyframes counter-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+/* Style de l'overlay de contenu */
+#content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9); /* Fond presque noir pour le contraste */
+    backdrop-filter: blur(15px);
+    display: none; /* Changé par JS */
+    z-index: 10000; /* Priorité maximale */
+    pointer-events: auto;
+}
+
+/* La boîte blanche/sombre qui contient le texte */
+.book-section {
+    display: flex; 
+    flex-direction: column;
+    
+    /* Centrage absolu sans dépendre du parent flex */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+    max-width: 800px;
+    min-height: 200px;
+    background: #1a1a1a;
+    border: 2px solid var(--accent-blue);
+    padding: 40px;
+    border-radius: 15px;
+    
+    /* Force la visibilité du texte */
+    color: #ffffff !important;
+    text-align: left;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.book-section h2 {
+    color: var(--accent-blue) !important;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#content-body {
+    color: #ffffff !important;
+    line-height: 1.6;
+}
+
+.close-btn {
+    margin-top: 20px;
+    align-self: flex-start; /* Aligné à gauche dans le flex */
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.close-btn:hover {
+    color: #000000;
+    background: white;
+    box-shadow: 0 0 20px white;
 }

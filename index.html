@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Corroller - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <title>Arthur Corroller - Book Apprentissage</title>
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
@@ -19,10 +16,9 @@
         
         <div id="intro-screen">
             <div id="mainTitle">
-                <h1 class="big-title">ARTHUR<br>CORROLLER</h1>
+                <h1 class="big-title">ARTHUR <br> CORROLLER</h1>
                 <p class="sub-title">Apprenti Ingénieur IDIA</p>
             </div>
-            
             <button id="launchBtn">
                 <span class="btn-text">INITIALISER LE DÉCOLLAGE</span>
                 <div class="btn-glow"></div>
@@ -34,7 +30,7 @@
         </div>
 
         <div id="interface-cockpit">
-
+            
             <div class="solar-system">
                 <div class="sun">
                     <div class="sun-logos">
@@ -42,75 +38,50 @@
                         <img src="assets/images/logo-polytech-nantes.webp" alt="Polytech" class="logo-sun">
                     </div>
                 </div>
+                <div class="orbit-path orbit-s5"><button class="planet s5" onclick="selectSemester(5)">S5</button></div>
+                <div class="orbit-path orbit-s6"><button class="planet s6" onclick="selectSemester(6)">S6</button></div>
+                <div class="orbit-path orbit-s7"><button class="planet s7" onclick="selectSemester(7)">S7</button></div>
+                <div class="orbit-path orbit-s8"><button class="planet s8" onclick="selectSemester(8)">S8</button></div>
+                <div class="orbit-path orbit-s9"><button class="planet s9" onclick="selectSemester(9)">S9</button></div>
+                <div class="orbit-path orbit-s10"><button class="planet s10" onclick="selectSemester(10)">S10</button></div>
+            </div>
 
-                <div class="orbit-path orbit-s5" id="path-s5">
-                    <button class="planet s5" onclick="selectSemester(5)">S5</button>
+            <div class="planetary-system" style="display: none; opacity: 0;">
+                
+                <div class="selected-planet-container">
+                    <div id="central-planet-visual" class="central-planet">S5</div>
                 </div>
-                <div class="orbit-path orbit-s6" id="path-s6"> 
-                    <button class="planet s6" onclick="selectSemester(6)">S6</button>
+
+                <div class="orbit-moon orbit-moon-1">
+                    <button class="moon moon-btn" onclick="openContent('entreprise')">Entreprise</button>
                 </div>
-                <div class="orbit-path orbit-s7" id="path-s7">
-                    <button class="planet s7" onclick="selectSemester(7)">S7</button>
+                <div class="orbit-moon orbit-moon-2">
+                    <button class="moon moon-btn" onclick="openContent('missions')">Missions</button>
                 </div>
-                <div class="orbit-path orbit-s8" id="path-s8">
-                    <button class="planet s8" onclick="selectSemester(8)">S8</button>
+                <div class="orbit-moon orbit-moon-3">
+                    <button class="moon moon-btn" onclick="openContent('ecole')">École</button>
                 </div>
-                <div class="orbit-path orbit-s9" id="path-s9">
-                    <button class="planet s9" onclick="selectSemester(9)">S9</button>
-                </div>
-                <div class="orbit-path orbit-s10" id="path-s10">
-                    <button class="planet s10" onclick="selectSemester(10)">S10</button>
-                </div>
+
+                <button id="backToSolar" onclick="backToSolarSystem()">
+                    Retour au Système La Poste | Polytech
+                </button>
             </div>
 
             <div id="fixedText">
                 <h2 id="semester-choice-title">Choisissez un semestre</h2>
-                <h2 id="destination-choice-title" style="display: none; opacity: 0;">Sélectionnez une destination</h2>
-            </div>
-
-            <button id="backToSolar" onclick="backToSolarSystem()" style="opacity: 0; margin-bottom: 20px;" class="station-btn">
-                Retour au Système La Poste | Polytech Nantes
-            </button>
-
-            <div class="stations-container" id="station-menu" style="display: none; opacity: 0;">
-                <button class="station-btn" onclick="openSection('entreprise')">L'Entreprise</button>
-                <button class="station-btn" onclick="openSection('missions')">Missions</button>
-                <button class="station-btn" onclick="openSection('ecole')">École</button>
+                <h2 id="destination-choice-title" style="display: none;">Sélectionnez une destination</h2>
             </div>
         </div>
 
-        <div id="content-wrapper">
-            <section id="entreprise" class="book-section">
-                <h2>La Poste - DSI BGPN</h2>
-                <p>Présentation de l'organisation : Dans le cadre de mon parcours d'ingénieur orienté Data et IA en alternance, j'ai eu la chance d'intégrer le groupe La Poste, et plus précisément la DSI de la Branche Grand Public et Numérique (BGPN). Au sein de cette structure, j'évolue dans la direction DSOD (Direction des Solutions Distributeurs), sous la responsabilité de Louis Ramin. Mon alternance s'inscrit dans un projet stratégique : le Programme SI Distributeur 2030, piloté par Christophe Le Du, qui vise à moderniser l'intégralité des outils numériques utilisés par les postiers et les clients en bureau de poste.
-
-                    Mon environnement : Je suis rattaché à l'équipe ART (Appui et Référent Technique), menée par Loïc Hennequin. Je travaille en collaboration directe avec mon tuteur, Jérôme Biabiany, Expert Informatique, qui m'accompagne sur les aspects techniques et stratégiques, tandis que Loïc Hennequin apporte une vision stratégique et l'orientation projet.</p>
-                <button class="close-btn" onclick="closeSection()">Retour sur la planète</button>
-            </section>
-
-            <section id="missions" class="book-section">
-                <h2>Missions - Modernisation Applicative et Poc IA </h2>
-                <p>Le défi de la migration (Legacy vers nouveau socle technologique) : Ma mission principale consiste à piloter la migration du socle applicatif Legacy (utilisant des technologies datées) de La Poste vers un environnement moderne basé sur Java 17+ et SpringBoot. Cette migration est importante pour assurer la maintenabilité, la sécurité et la performance des applications de la branche.
-
-                    À ce jour, j'ai réalisé la migration complète de deux premières applications. Ce travail nécessite une compréhension de l'existant et une certaine rigueur pour transformer l'architecture vers les normes Maven, les nouvelles technologies qui peuvent parfois différer et les standards actuels de l'entreprise (nommage, conventions, packaging).
-
-                    Innovation : Accélération par l'IA : "Parallèlement à ces migrations manuelles, j'ai pu commencer à me renseigner et à tester un POC (Proof of Concept) visant à automatiser ce processus grâce à l'Intelligence Artificielle. L'objectif est de concevoir un système d'assistance à la migration pour gagner en efficacité et réduire les erreurs humaines lors des phases de refactorisation du code.
-
-                    Dans ce cadre, j'ai eu l'opportunité de participer aux réflexions de la DSI sur l'usage de l'IA lors de plusieurs réunions sur les nouveaux modèles de langage exploitables par le groupe ou encore une réunion sur l'utilisation de l'IA au sein des équipes.
-
-                    Capitalisation et Documentation : Enfin, conformément aux exigences de l'ingénieur, j'ai pu produire une documentation technique (basée sur mes premières migrations réussies). Ce guide étape par étape détaille la migration de l'architecture Maven, la gestion des dépendances et la mise en place de services de Mock (SoapUI) pour garantir l'autonomie des tests sans dépendre des services externes.</p>
-                <button class="close-btn" onclick="closeSection()">Retour sur la planète</button>
-            </section>
-
-            <section id="ecole" class="book-section">
-                <h2>École</h2>
-                <p>Contenu École... Work in progress</p>
-                <button class="close-btn" onclick="closeSection()">Retour sur la planète</button>
-            </section>
+        <div id="content-overlay">
+            <div class="book-section">
+                <h2 id="content-title">Titre va ici</h2>
+                <div id="content-body">Le texte va ici</div>
+                <button class="close-btn" onclick="closeContent()">Retour à l'orbite</button>
+            </div>
         </div>
 
     </div>
-
     <script src="assets/js/script.js"></script>
 </body>
 </html>
