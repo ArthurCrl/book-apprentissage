@@ -1,0 +1,14 @@
+{
+    "name": "Arthur",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:24-trixie",
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.npmrc,target=/home/node/.npmrc,type=bind,consistency=cached"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "SonarSource.sonarlint-vscode"
+            ]
+        }
+    }
+}
