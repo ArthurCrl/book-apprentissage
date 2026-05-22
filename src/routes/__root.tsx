@@ -1,4 +1,4 @@
-import { createRootRoute, useRouterState } from '@tanstack/react-router'
+import { createRootRoute, useRouterState, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import Footer from '../components/Footer'
@@ -16,7 +16,7 @@ function RootLayout() {
     <div className="flex flex-col min-h-screen">
       {!isSolarSystem && <Header />}
       <main className="flex-1">
-        <RootLayout.Outlet />
+        <Outlet />
       </main>
       {!isSolarSystem && <Footer />}
       <TanStackDevtools
