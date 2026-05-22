@@ -1,0 +1,24 @@
+name: Cleanup old artifacts
+
+on:
+  workflow_run:
+    workflows: [Deploy to GitHub Pages]
+    types: [completed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete all artifacts
+        env:
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARTIFACTS=$(curl -s -H "Authorization: token $TOKEN" \
+            "https://api.github.com/repos/$REPO/actions/artifacts" | jq '.artifacts[] | select(.name == "github-pages") | .id')
+          
+          for artifact_id in $ARTIFACTS; do
+            echo "Deleting artifact $artifact_id"
+            curl -X DELETE -H "Authorization: token $TOKEN" \
+              "https://api.github.com/repos/$REPO/actions/artifacts/$artifact_id"
+          done
